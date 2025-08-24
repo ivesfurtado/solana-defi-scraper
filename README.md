@@ -12,6 +12,22 @@ This project provides a comprehensive WebSocket-based solution for monitoring an
 
 The scraper connects to Solana's mainnet WebSocket API to monitor program logs in real-time, automatically parsing and extracting structured event data from raw transaction logs.
 
+## Architecture
+
+```
+┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
+│   Solana RPC    │───▶│  WebSocket      │───▶│  Event          │
+│   WebSocket     │    │  Connection     │    │  Processor      │
+└─────────────────┘    └─────────────────┘    └─────────────────┘
+                                                        │
+                                                        ▼
+┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
+│   Jupiter       │    │   Pump.fun      │    │   Raydium       │
+│   Layout        │    │   Layout        │    │   Layout        │
+│   Decoder       │    │   Decoder       │    │   Decoder       │
+└─────────────────┘    └─────────────────┘    └─────────────────┘
+```
+
 ## Supported Events
 
 #### Jupiter Aggregator
@@ -30,22 +46,6 @@ The scraper connects to Solana's mainnet WebSocket API to monitor program logs i
 - **Swap Transactions**: Direct AMM swap events
 - **Liquidity Events**: Add/remove liquidity operations
 - Captures: AMM pool data, reserve amounts, fees, market information
-
-## Architecture
-
-```
-┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
-│   Solana RPC    │───▶│  WebSocket      │───▶│  Event          │
-│   WebSocket     │    │  Connection     │    │  Processor      │
-└─────────────────┘    └─────────────────┘    └─────────────────┘
-                                                        │
-                                                        ▼
-┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
-│   Jupiter       │    │   Pump.fun      │    │   Raydium       │
-│   Layout        │    │   Layout        │    │   Layout        │
-│   Decoder       │    │   Decoder       │    │   Decoder       │
-└─────────────────┘    └─────────────────┘    └─────────────────┘
-```
 
 ## Installation
 
