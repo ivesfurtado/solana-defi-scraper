@@ -7,6 +7,7 @@ readme = "README.md"
 license = "MIT"
 repository = "https://github.com/ivesfurtado/solana-defi-scraper"
 keywords = ["solana", "defi", "blockchain", "scraper", "websocket", "jupiter", "raydium", "pump-fun"]
+packages = [{include = "src"}]
 classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Developers",
